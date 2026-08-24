@@ -5,7 +5,9 @@ document.addEventListener("DOMContentLoaded", function () {
     const MissValue = document.getElementById("clickMIssValue");
     let score = 0;
     let miss = 0;
-
+    MissValue.textContent = miss;
+    scoreValue.textContent = score;
+    
     function MoveBox() {
         const areaWidth = area.clientWidth;
         const areaHeight = area.clientHeight;

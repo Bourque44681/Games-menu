@@ -96,3 +96,60 @@
 #box:hover {
     transform:scale(1.1)
 }
+
+#background {
+    background-color: grey;
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    top:50%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    border-radius:15px;
+    display: flex;              /* Enables flexbox */
+    align-items: center;        /* Vertical centering */
+    flex-direction: column;
+    border: 2px solid black;
+
+}
+
+#background h1 {
+    position: absolute;
+    margin: 0;
+    top: 10px;
+    font-weight: bold;
+    font-size: 50px;
+}
+
+#buttonSpace {
+    position: absolute;
+    top:57%;
+    left:54%;
+    transform:translate(-50%, -50%);
+    width: 500px;
+    height: 400px;
+    border-radius:15px;
+    display: grid;
+    grid-template-columns: repeat(3, 120px); /* Change number of columns here */
+    grid-template-rows: repeat(100, 25px);    /* Change number of rows here */
+    gap: 20px;                             /* Change gap value here */
+    padding: 20px;
+}
+
+#buttonSpace button{
+    border: 1px solid black;
+    width: 120px;
+    height: 35px;
+    text-align: center;
+    font-weight: bolder;
+    border-radius: 15px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+    cursor:pointer;
+
+}
+
+#buttonSpace button:hover {
+    
+    background-color: rgb(175, 175, 175);
+    transform: scale(1.1)
+}
