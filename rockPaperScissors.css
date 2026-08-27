@@ -78,7 +78,9 @@ body {
 #sis {
     position: relative;
     bottom: 2px;
-    width: 150px
+    width: 100px;
+    left: 30px;
+    top:5px;
 }
 
 .image {
