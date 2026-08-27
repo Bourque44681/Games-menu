@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
         if (link) {
             // Redirect to the link
-            window.location.href = link;
+            window.open(link, "_blank")
         } else {
             console.warn('Button has no href attribute:', button);
         }

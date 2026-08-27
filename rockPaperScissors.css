@@ -1,0 +1,106 @@
+body {
+    margin:0;
+}
+
+#bg1 {
+    z-index: -1;
+    position: absolute;
+    width:50vw;
+    height:60vw;
+    background-color:rgb(31, 31, 235);
+    left: 0vw;
+    bottom: 0px;
+}
+
+#bg2 {
+    z-index: -1;
+    position: absolute;
+    width:50vw;
+    height:60vw;
+    background-color: red;
+    left: 50vw;
+    bottom:0px;
+}
+
+#you {
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(112, 112, 112, 0.3);
+    width: 300px;
+    height: 60px;
+    top: 0px;
+    left: 10vw;
+    text-align: center;
+    font-size: 50px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color:black;
+}
+
+#computer {
+    z-index: 2;
+    position: absolute;
+    background-color: rgba(112, 112, 112, 0.3);
+    width: 300px;
+    height: 60px;
+    top: 0px;
+    left:65vw;
+    text-align: center;
+    font-size: 50px;
+    border: 2px solid black;
+    border-radius: 10px;
+    color:black;
+}
+
+#chooseMenu {
+    background-color: rgba(112, 112, 112, 0.3);
+    width: 660px;
+    position: absolute;
+    left:21vw;
+    top: 50%;
+    padding-left: 60px;
+    border: 3px solid black;
+    border-radius: 10px;
+}
+
+#rock {
+    position: relative;
+    bottom: 20px;
+    width: 200px
+}
+
+#paper {
+    position: relative;
+    bottom: 0px;
+    width: 200px
+}
+
+#sis {
+    position: relative;
+    bottom: 2px;
+    width: 150px
+}
+
+.image {
+    transition: transform 0.06s ease;
+}
+
+.image:hover{
+    transform:scale(1.1)
+}
+
+#showCase1 {
+    position: absolute;
+    width:400px;
+    z-index: 1;
+    left:75px;
+    top:120px;
+}
+
+#showCase2 {
+    position: absolute;
+    width:400px;
+    z-index: 1;
+    left:57%;
+    top:120px;
+}

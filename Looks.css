@@ -110,7 +110,6 @@
     align-items: center;        /* Vertical centering */
     flex-direction: column;
     border: 2px solid black;
-
 }
 
 #background h1 {
@@ -119,6 +118,11 @@
     top: 10px;
     font-weight: bold;
     font-size: 50px;
+    background-color: rgb(146, 146, 146);
+    border-radius: 15px;
+    width: 280px;
+    text-align: center;
+    border: 2px solid rgb(80, 79, 79);
 }
 
 #buttonSpace {
@@ -134,6 +138,7 @@
     grid-template-rows: repeat(100, 25px);    /* Change number of rows here */
     gap: 20px;                             /* Change gap value here */
     padding: 20px;
+    
 }
 
 #buttonSpace button{
@@ -152,4 +157,16 @@
     
     background-color: rgb(175, 175, 175);
     transform: scale(1.1)
+}
+
+#background2 { 
+    background-color: grey;
+    width: 450px;
+    height: 410px;
+    position: absolute;
+    top:56.5%;
+    left:50%;
+    transform:translate(-50%, -50%);
+    border-radius:15px;
+    border: 2px solid black;
 }
