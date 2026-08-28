@@ -61,24 +61,27 @@ body {
     padding-left: 60px;
     border: 3px solid black;
     border-radius: 10px;
+    transition: opacity 0.2s ease;
 }
 
 #rock {
     position: relative;
     bottom: 20px;
-    width: 200px
+    width: 200px;
+    right: 20px;
 }
 
 #paper {
     position: relative;
     bottom: 0px;
-    width: 200px
+    width: 200px;
+    left: 5px
 }
 
 #sis {
     position: relative;
     bottom: 2px;
-    width: 100px;
+    width: 200px;
     left: 30px;
     top:5px;
 }
@@ -96,7 +99,8 @@ body {
     width:400px;
     z-index: 1;
     left:75px;
-    top:120px;
+    top:150px;
+    transition: opacity 0.2s ease;
 }
 
 #showCase2 {
@@ -104,5 +108,28 @@ body {
     width:400px;
     z-index: 1;
     left:57%;
-    top:120px;
+    top:150px;
+    transition: opacity 0.2s ease;
+}
+
+#youScore {
+    position:absolute;
+    font-size: 40px;
+    left:510px;
+    top:5px;
+}
+
+#computerScore {
+    position:absolute;
+    font-size: 40px;
+    left:700px;
+    top:5px;
+}
+
+.score {
+    background-color: rgba(112, 112, 112, 0.3);
+    width: 50px;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 10px;
 }
