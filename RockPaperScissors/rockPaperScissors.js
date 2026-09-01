@@ -34,43 +34,43 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function ShowCase(link, choice) {
-        const num = Math.floor((Math.random() * 3) + 1)
+        const num = Math.floor(Math.random() * 3) + 1; // 1, 2, or 3
         let link2 = null;
         let choice2 = null;
-        if (num == 1) {
-            link2 = rockLink
-            choice2 = 1
-        }
-        else if (num == 2) {
-            link2 = paperLink
-            chocie2 = 2
-        }
-        else {
-            link2 = scissorsLink
-            choice2 = 3
-        }
-        showCase1.src = link
-        showCase2.src = link2
-        showCase1.style.opacity = 1
-        showCase2.style.opacity = 1
-        chooseMenu.style.opacity = 0
-        // Check who won
-        if (choice == choice2) {
 
-        }
-        else if (winCheck[choice] == choice2) {
-            youValue ++
+        if (num === 1) {
+            link2 = rockLink; 
+            choice2 = 1;
+        } else if (num === 2) {
+            link2 = paperLink; 
+            choice2 = 2;
+        } else {
+            link2 = scissorsLink; 
+            choice2 = 3;
         }
 
-        else {
-            computerValue ++
+        // Display images
+        showCase1.src = link;
+        showCase2.src = link2;
+        showCase1.style.opacity = 1;
+        showCase2.style.opacity = 1;
+        chooseMenu.style.opacity = 0;
+
+        // Determine winner
+        if (choice === choice2) {
+            // Tie
+        } else if (winCheck[choice] === choice2) {
+            youValue++;
+        } else if (winCheck[choice2] === choice) {
+            computerValue++;
         }
 
-        youScoreValue.textContent = youValue
-        computerScoreValue.textContent = computerValue
-        setTimeout(function() {
-            ResetStuffFr()
-        }, 2000);
+        // Update score display
+        youScoreValue.textContent = youValue;
+        computerScoreValue.textContent = computerValue;
+
+        // Reset after delay
+        setTimeout(ResetStuffFr, 2000);
     }
 
     document.addEventListener("click", function(element){
@@ -79,10 +79,10 @@ document.addEventListener("DOMContentLoaded", function(){
         const target = element.target
         
         if (target) {
-            if (target == rock) {
+            if (target === rock) {
                 ShowCase(rockLink, 1)
             }
-            else if (target == paper) {
+            else if (target === paper) {
                 ShowCase(paperLink, 2)
             }
             else {
