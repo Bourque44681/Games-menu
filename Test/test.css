@@ -1,0 +1,134 @@
+body {
+    background-color: rgb(209, 204, 204);
+}
+
+#HomeScreen {
+    position: absolute;
+    width: 50vw;
+    height: 40vw;
+    background-color: rgb(233, 202, 202);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3vw;
+    border: 2px solid black;
+    text-align: center;
+}
+
+#HomeScreen h1 {
+    position: relative;
+    font-size: 4vw;
+    background-color: rgb(233, 190, 190);
+    border-radius: 1vw;
+    width: 40vw;
+    left: 5vw;
+    border: 2px solid black;
+}
+
+#HomeScreen h2 {
+    font-size: 2.7vw;
+}
+
+#HomeScreen p {
+    font-weight: bold;
+    font-size:1.5vw;
+}
+
+#instrucBack {
+    position: absolute;
+    background-color: rgb(233, 190, 190);
+    border-radius: 1vw;
+    width: 40vw;
+    left: 5vw;
+    height: 17vw;
+    border: 2px solid black;
+}
+
+#beginTestButton {
+    position: relative;
+    width: 20vw;
+    height: 6vw;
+    border: 3px solid black;
+    border-radius: 1vw;
+    text-align: center;
+    font-size: 2.5vw;
+    font-weight: bolder;
+    background-color: rgb(215, 165, 165);
+    top: 4.5vw;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    cursor: pointer;
+}
+
+#beginTestButton:hover{
+    transform: scale(1.1);
+    background-color:rgb(162, 123, 123);
+    
+}
+
+#HomeScreen {
+    visibility: visible;
+}
+
+/* dsajkfhasdfhasdjklhfklasjdhfkjlasdhfkjlasdhfkljashfkljasdhfkjlasd */
+#testTakingBackground {
+    position: absolute;
+    width: 50vw;
+    height: 40vw;
+    background-color: rgb(233, 202, 202);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3vw;
+    border: 2px solid black;
+    text-align: center;
+    visibility: hidden;
+}
+/* weadjkhldsafhdaskjfhaskdjlfhklasdjhfkalsjdhflksajdhfklasdj */
+
+#question {
+    position: relative;
+    background-color:rgb(233, 190, 190);
+    border-radius: 15px;
+    width: 45vw;
+    left: 2.4vw;
+    font-size: 3vw;
+    height: 11vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+}
+
+#anserChoices {
+    position: absolute;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4vw;          
+    width: 100%;
+    margin-left: 2vw;
+    margin-top: 6vw;
+    width: 50vw;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    visibility: hidden;
+}
+
+.button {
+    width: 21vw;
+    height: 6vw;
+    border-radius: 1vw;
+    border: 2px solid black;
+    background-color:rgb(218, 170, 170);
+    cursor: pointer;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    font-size: 1.5vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.button:hover {
+    transform: scale(1.1);
+    background-color:rgb(162, 123, 123);
+}
