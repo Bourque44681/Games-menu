@@ -32,7 +32,7 @@ document.addEventListener("DOMContentLoaded", function(){
         9:["Which is a island located in the Caribbean?", "The Bahamas", "The Philippines", "Guam", "Puerto Rico"],
         10:["What is 2+2","4","22", "3", "2"],
         11:["What is the fastest substance on Earth?", "Photons", "Neutrinos", "Ultra-high-energy cosmic ray particles", "water"],
-        12:["There are some people on a train, 14 got off, there are now 20 people still left on the train. How many people were orginally on the train", "34", "32", "40", "30"],
+        12:["There are x people on a train, 14 got off, there are now 20, how many people where on the train?", "34", "32", "40", "30"],
         13:["What is the most popular sport in the world?", "Soccer", "Football", "Baseball", "Tennis"],
         14:["What is the most visited country on Earth?", "France", "United States", "Paris", "United Kingdom"],
         15:["After what event was the National Anthem written?", "British Bombardment of Fort McHenry", "Battle of the Marne", "Gallipoli Campaign", "Battle of Jutland"],
@@ -95,7 +95,6 @@ document.addEventListener("DOMContentLoaded", function(){
     function check(num) {
         if (num === answer) {
             Correct++;
-            window.open("akdlfkdasf.html")
         }
         else {
             Incorrect++;
