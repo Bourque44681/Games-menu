@@ -132,3 +132,59 @@ body {
     transform: scale(1.1);
     background-color:rgb(162, 123, 123);
 }
+
+#endTest {
+    position: absolute;
+    width: 50vw;
+    height: 40vw;
+    background-color: rgb(233, 202, 202);
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 3vw;
+    border: 2px solid black;
+    text-align: center;
+    visibility: hidden;
+}
+
+#endTest h1 {
+    position: relative;
+    font-size: 5vw;
+    background-color: rgb(233, 190, 190);
+    border-radius: 1vw;
+    width: 25vw;
+    left: 11.5vw;
+    border: 2px solid black;
+}
+
+#infoBox {
+    position: relative;
+    background-color: rgb(233, 190, 190);
+    width: 40vw;
+    height: 25vw;
+    left:5vw;
+    border-radius: 1vw;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#infoBox h3 {
+    font-size: 3vw;
+}
+
+#timer {
+    background-color: grey;
+    width: 10vw;
+    height: 7vw;
+    text-align: center;
+    border-radius: 1vw;
+    border: 2px solid black;
+}
+
+#timerText {
+    position: relative;
+    bottom: 1vw;
+}

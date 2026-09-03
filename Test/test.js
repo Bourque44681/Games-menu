@@ -10,6 +10,11 @@ document.addEventListener("DOMContentLoaded", function(){
     const question = document.getElementById("question");
     const anserChoices = document.getElementById("anserChoices")
 
+    const Results = document.getElementById("endTest")
+    const CorVal = document.getElementById("CorrectScore")
+    const IncVal = document.getElementById("IncorrectScore")
+    const IQVal = document.getElementById("IQlevel")
+
     let testOn = false;
     let CanAnswer = false;
     let answer = 0;
@@ -17,6 +22,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     let Correct = 0;
     let Incorrect = 0;
+    let QuestionsAnswered = 0;
 
 
     const stf = {
@@ -27,7 +33,7 @@ document.addEventListener("DOMContentLoaded", function(){
         4:["What state has the most borders with other states?", "Missouri and Tennessee", "Tennessee", "Missouri", "Illinois"],
         5:["What is the closest  planet to the sun", "Mercury", "Earth", "Venus", "Mars"],
         6:["Who of the following was NOT and founding father:", "Abraham Lincoln", "Alexander Hamilton", "Thomas Stone", "George Washington"],
-        7:["During World War II, who led the D-Day invasion?", " Dwight D. Eisenhower", "George S. Patton", "Bernard Montgomery", "Teddy Roosevelt"],
+        7:["During World War II, who was the main leader during the D-Day invasion?", " Dwight D. Eisenhower", "George S. Patton", "Bernard Montgomery", "Teddy Roosevelt"],
         8:["What movie production company was the first to build a theme park?", "Walt Disney", "Universal Studios", "Hollywood", "Pixar"],
         9:["Which is a island located in the Caribbean?", "The Bahamas", "The Philippines", "Guam", "Puerto Rico"],
         10:["What is 2+2","4","22", "3", "2"],
@@ -39,11 +45,29 @@ document.addEventListener("DOMContentLoaded", function(){
         16:["What are the first 7 digits of pi?", "3.141592", "3.141792", "3.141593", "3.141527"],
         17:["What is the most popular programming language in the United States?", "Python", "Java Script", "Java", "PHP"],
         18:["Which of the following is a 3 dimentional shape?", "sphere", "square", "rectangle", "circle"],
-        19:["What is the most abundant metal in the world?", "Aluminum", "Iron", "Magnesium", "Calcium"]
+        19:["What is the most abundant metal in the world?", "Aluminum", "Iron", "Magnesium", "Calcium"],
+        20:["What are there more of?", "Trees on Earth", "Stars in the Milkyway Galaxy", "People on Earth", "Michael Jacksons"],
+        21:["What is Alaska's official state bird?", "Willow Ptarmigan", "moose", "Pengiun", "Snowy Owl"],
+        22:["Who was the og Robber Barron?", "John D. Rocketfeller", "J.P. Morgan", "Vanderbilt", "Andrew Carnegie"],
+        23:["What is the biggest state in the United States?", "Alaska", "Texas", "California", "Montana"],
+        24:["What was the first animal to go to space?", "Fruit Flies", "Monkeys", "Dogs", "Mosquito"]
     };
     let alreadChosen = []
 
+    function EndGame() {
+        Results.style.visibility = "visible";
+        TestTakingBackground.style.visibility = "hidden";
+        anserChoices.style.visibility = "hidden";
+        CorVal.textContent = Correct;
+        IncVal.textContent = Incorrect;
+        IQVal.textContent =  Math.floor((Correct/20)*100);
+        let z = thingy -50/10;
+        let iq = (z*15) + 15
+        IQVal.textContent = iq;
+    };
+
     function PickQuestion() {
+        if (QuestionsAnswered === 20) {EndGame()};
         let len = Object.keys(stf).length;
         if (len === alreadChosen.length) {
                 return;
@@ -93,6 +117,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
 
     function check(num) {
+        QuestionsAnswered++;
         if (num === answer) {
             Correct++;
         }
