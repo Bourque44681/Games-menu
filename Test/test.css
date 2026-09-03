@@ -186,5 +186,6 @@ body {
 
 #timerText {
     position: relative;
-    bottom: 1vw;
+    bottom: 1.3vw;
+    font-size: 2.7vw;
 }
