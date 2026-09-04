@@ -94,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function(){
         IncVal.textContent = Incorrect;
         IQVal.textContent =  Math.floor((Correct/20)*100);
         let z = thingy -50/10;
-        let iq = (z*15) + 15
+        let iq = (z*15)+10
         IQVal.textContent = iq;
     };
 
