@@ -1,0 +1,71 @@
+body {
+    display:flex;
+    justify-content: center;
+    align-content: center;
+    background-color: lightgray;
+}
+
+#WordsBox {
+    position:absolute;
+    width: 50vw;
+    height: 40vw;
+    background-color: grey;
+    border-radius: 1vw;
+    border: 2px solid black;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#timer {
+    position: absolute;
+}
+
+#info {
+    position: relative;
+    background-color: grey;
+    width: 50vw;
+    height: 5vw;
+    border-radius: 1vw;
+    border: 2px solid black;
+    bottom: .2vw;
+    right: 0.15vw;
+    display: flex;
+    justify-content: center; 
+}
+
+#info h1 {
+    position:relative;
+    bottom:.6vw;
+    font-size: 3vw;
+    bottom: 1.3vw;
+}
+
+#textbox {
+    position: relative;
+    background-color:transparent;
+    width: 45vw;
+    height: 18.5vw;
+    top: 0.7vw;
+    left: 2.5vw;
+    word-wrap: break-word;
+    overflow: hidden;
+
+}
+
+#Words {
+    font-weight:bolder;
+    font-size: 2vw;
+    font-family: "Helvetica";
+}
+
+#showTypingLine {
+    position: absolute;
+    background-color: red;
+    width: .5vw;
+    height: 2vw;
+    top: 10vw;
+    left: 27vw;
+    opacity: .5;
+    border-radius: .5vw;
+}
