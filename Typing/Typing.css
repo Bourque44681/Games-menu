@@ -144,6 +144,65 @@ body {
 }
 
 .button:hover {
-    transform: scale(1.1);
-    border: 2px solid black;
+    transform: matrix(1.3,0,0,1.3,0,0);
+}
+
+#shortWords {
+    position: absolute;
+    width:3vw;
+    height:3vw;
+    border-radius: 1vw;
+    top:1vw;
+    left:34vw;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s ease;
+}
+
+#shortWords h1 {
+    position: relative;
+    font-size:2vw;
+    text-align: center;
+    top:-.9vw;
+    cursor: default;
+    pointer-events: none;
+}
+
+#mediumWords {
+    position: absolute;
+    width:3vw;
+    height:3vw;
+    border-radius: 1vw;
+    top:1vw;
+    left:38vw;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s ease;
+}
+
+#mediumWords h1 {
+    position: relative;
+    font-size:2vw;
+    text-align: center;
+    top:-.9vw;
+    cursor: default;
+    pointer-events: none;
+}
+
+#longsWords {
+    position: absolute;
+    width:3vw;
+    height:3vw;
+    border-radius: 1vw;
+    top:1vw;
+    left:42vw;
+    background-color: rgb(255, 255, 255);
+    transition: all 0.2s ease;
+}
+
+#longsWords h1 {
+    position: relative;
+    font-size:2vw;
+    text-align: center;
+    top:-.9vw;
+    cursor: default;
+    pointer-events: none;
 }
