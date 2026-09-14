@@ -68,7 +68,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     function ShowScoreResultStf() {
         const elapsedSeconds = Math.min(
-            25,
+            timer,
             (performance.now() - StartTime) / 1000
         );
 
