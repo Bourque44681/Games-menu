@@ -16,6 +16,11 @@ document.addEventListener("DOMContentLoaded", function(){
 
     var CurrentLettersFound = [];
     var AlreadyChosenLetters = [];
+    var CurrentLettersTrueFalse = [];
+    var AlrChosenLettersTrueFalse = [];
+    var ChosenKeepTrack = 0;
+    var CurrentKeepTrack = 0;
+
 
     let theOneTyping = false;
 
@@ -36,6 +41,7 @@ document.addEventListener("DOMContentLoaded", function(){
             NewDiv.classList.add("LPslot");
             letterPlacementsCont.appendChild(NewDiv);
             CurrentLettersFound.push(NewDiv);
+            CurrentLettersTrueFalse.push(false)
             
         };
         for (let i = 0; i <18; i++) {
@@ -43,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
             thingy.classList.add("ACslot")
             alreadyChosenCont.appendChild(thingy);
             AlreadyChosenLetters.push(thingy);
+            AlrChosenLettersTrueFalse.push(false)
         };
     };
 
@@ -63,18 +70,26 @@ document.addEventListener("DOMContentLoaded", function(){
 
     SetUpDoc();
     ResetStf();
-    runForever();
+    runForever();            
+    SlotToTarget = CurrentLettersFound[0];
+    SlotToTarget.appendChild(currentTyping);
+
     var SlotToTarget = CurrentLettersFound[0];
     let ThingyToTarget = AlreadyChosenLetters[0];
 
+
+    function GuessedLetter(Guess){
+        console.log("Yessir")
+    }
+
     document.addEventListener("click", function(event){
         if (event.target == letterPlacementsCont){
-            SlotToTarget = CurrentLettersFound[0];
+            SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
             SlotToTarget.appendChild(currentTyping);
             theOneTyping = false;
         }
         else if (event.target == alreadyChosen) {
-            ThingyToTarget = AlreadyChosenLetters[0];
+            ThingyToTarget = AlreadyChosenLetters[ChosenKeepTrack];
             ThingyToTarget.appendChild(currentTyping);
             theOneTyping = true;
         };
@@ -85,8 +100,42 @@ document.addEventListener("DOMContentLoaded", function(){
         if (theOneTyping === false) {
             let Text = document.createElement("h1");
             Text.textContent = key;
-            Text.classList.add("text")
+            Text.classList.add("text");
             SlotToTarget.appendChild(Text);
+            CurrentLettersTrueFalse[CurrentKeepTrack] = true;
+            SlotToTarget.appendChild(currentTyping);
+            CurrentKeepTrack++;
+        }
+
+
+        // there is so much stf happening my brain hurts frfr
+
+        else if (theOneTyping === true) {
+            if (AlrChosenLettersTrueFalse[ChosenKeepTrack] === false) {
+                const isLetter = /^[a-zA-Z]$/.test(event.key);
+                if (!isLetter){
+                    return;
+                };
+                let Text = document.createElement("h1");
+                Text.textContent = key;
+                Text.classList.add("text2");
+                ThingyToTarget.appendChild(Text);
+                AlrChosenLettersTrueFalse[ChosenKeepTrack] = true;
+            }
+            else if (key === "Backspace"){
+                let h1 = ThingyToTarget.querySelector("h1");
+                h1.remove();
+                AlrChosenLettersTrueFalse[ChosenKeepTrack] = false;
+
+            }
+            else if (key === "Enter"){
+                ChosenKeepTrack++;
+                ThingyToTarget = AlreadyChosenLetters[ChosenKeepTrack];
+                ThingyToTarget.appendChild(currentTyping);
+                theOneTyping = true;
+                GuessedLetter(key);
+            }
+
         }
     });
     

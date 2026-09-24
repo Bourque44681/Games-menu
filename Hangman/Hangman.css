@@ -30,7 +30,7 @@
 }
 
 #letterPlacements:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 #theManOfHanging {
@@ -61,7 +61,7 @@
 }
 
 #alreadyChosen:hover {
-    transform: translate(-50%, -50%) scale(1.1);
+    transform: translate(-50%, -50%) scale(1.05);
 }
 
 #alrCont {
@@ -153,8 +153,9 @@
 }
 
 #CurrentTyping {
-    width:10%;
-    height: 75%;
+    position:absolute;
+    width:.5vw;
+    height: 3vw;
     background-color: black;
     opacity: 75%;
     border-radius: 1vw;
@@ -166,5 +167,13 @@
     font-size: 4vw;
     top:50%;
     left:50%;
-    transform: translate(-100%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.text2 {
+    position: relative;
+    font-size: 3vw;
+    top:50%;
+    left:50%;
+    transform: translate(-50%, -50%);
 }
