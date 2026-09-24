@@ -26,6 +26,11 @@
     align-content: center;
     align-items: center;
     gap: 1vw;
+    transition: all .3s ease;
+}
+
+#letterPlacements:hover {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 #theManOfHanging {
@@ -50,6 +55,13 @@
     transform: translate(-50%, -50%);
     border-radius: 2vw;
     border: .3vw solid black;
+    display:flex;
+    justify-content: center;
+    transition: all .3s ease;
+}
+
+#alreadyChosen:hover {
+    transform: translate(-50%, -50%) scale(1.1);
 }
 
 #alrCont {
@@ -59,7 +71,7 @@
     column-gap: .5vw;
     row-gap: .5vw;
     left: .8vw;
-    top:.5vw;
+    pointer-events: none;
 }
 
 #noose {
@@ -116,6 +128,7 @@
     position: absolute;
     left: 27.7vw;
     top:19vw;
+    pointer-events: none;
 }
 
 .LPslot {
@@ -124,6 +137,9 @@
     height:5vw;
     border-radius: 1.5vw;
     border: .3vw solid black;
+    pointer-events: none;
+    display:flex;
+    align-items: center;
 }
 
 .ACslot {
@@ -132,4 +148,23 @@
     height:3.5vw;
     border-radius: .8vw;
     border: .25vw solid black;
+    display:flex;
+    align-items: center;
+}
+
+#CurrentTyping {
+    width:10%;
+    height: 75%;
+    background-color: black;
+    opacity: 75%;
+    border-radius: 1vw;
+    transition: opacity .6s ease;
+}
+
+.text {
+    position: relative;
+    font-size: 4vw;
+    top:50%;
+    left:50%;
+    transform: translate(-100%, -50%);
 }
