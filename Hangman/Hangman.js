@@ -98,14 +98,35 @@ document.addEventListener("DOMContentLoaded", function(){
     document.addEventListener("keydown", function(event){
         let key = event.key;
         if (theOneTyping === false) {
-            let Text = document.createElement("h1");
-            Text.textContent = key;
-            Text.classList.add("text");
-            SlotToTarget.appendChild(Text);
-            CurrentLettersTrueFalse[CurrentKeepTrack] = true;
-            SlotToTarget.appendChild(currentTyping);
-            CurrentKeepTrack++;
+            if (CurrentLettersTrueFalse[CurrentKeepTrack] === false) {
+                const isLetter = /^[a-zA-Z]$/.test(event.key);
+                if (!isLetter){
+                    if (key === "Backspace"){
+                        let BackSLot = CurrentLettersFound[CurrentKeepTrack - 1];
+                        let text = BackSLot.querySelector("h1");
+                        alert("this2");
+                        text.remove();
+                        CurrentLettersTrueFalse[CurrentKeepTrack - 1] = false;
+                        CurrentKeepTrack--;
+                    }
+                    else {
+                        return;
+                    };
+                };
+                if (!isLetter){
+                    return;
+                }
+                let Text = document.createElement("h1");
+                Text.textContent = key;
+                Text.classList.add("text");
+                SlotToTarget.appendChild(Text);
+                CurrentLettersTrueFalse[CurrentKeepTrack] = true;
+                CurrentKeepTrack++;
+                SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+                SlotToTarget.appendChild(currentTyping);
+            }
         }
+
 
 
         // there is so much stf happening my brain hurts frfr
