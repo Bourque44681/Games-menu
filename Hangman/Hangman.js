@@ -77,10 +77,26 @@ document.addEventListener("DOMContentLoaded", function(){
     var SlotToTarget = CurrentLettersFound[0];
     let ThingyToTarget = AlreadyChosenLetters[0];
 
+    //-------------------------------------------------
+    // Maybe My brain Wont Break as Much Doing this part
+    //-------------------------------------------------
+
+
 
     function GuessedLetter(Guess){
-        console.log("Yessir")
+        console.log(Guess);
     }
+
+    function GuessedWord(guess){
+        console.log(guess);
+    }
+
+
+
+    //-------------------------------------------------
+    // Maybe My brain Wont Break as Much Doing this part
+    //-------------------------------------------------
+    
 
     document.addEventListener("click", function(event){
         if (event.target == letterPlacementsCont){
@@ -94,25 +110,45 @@ document.addEventListener("DOMContentLoaded", function(){
             theOneTyping = true;
         };
     });
-
+    var LastKey = null;
     document.addEventListener("keydown", function(event){
         let key = event.key;
         if (theOneTyping === false) {
-            if (CurrentLettersTrueFalse[CurrentKeepTrack] === false) {
-                const isLetter = /^[a-zA-Z]$/.test(event.key);
-                if (!isLetter){
-                    if (key === "Backspace"){
-                        let BackSLot = CurrentLettersFound[CurrentKeepTrack - 1];
-                        let text = BackSLot.querySelector("h1");
-                        alert("this2");
-                        text.remove();
-                        CurrentLettersTrueFalse[CurrentKeepTrack - 1] = false;
-                        CurrentKeepTrack--;
+            if (key === "Enter"){
+                let Count = 0;
+                let word = "";
+                for (let i = 0; i < CurrentLettersTrueFalse.length; i++){
+                    if (CurrentLettersTrueFalse[i] === true){
+                        let h1 = CurrentLettersFound[i].querySelector("h1");
+                        word += h1.textContent;
+                        Count++;
                     }
-                    else {
-                        return;
+                }
+                if (Count === CurrentLettersTrueFalse.length){
+                    GuessedWord(word);
+                };
+            };
+
+            if (key === "Backspace"){
+                let BackSLot = CurrentLettersFound[CurrentKeepTrack - 1];
+                if (CurrentLettersTrueFalse[CurrentLettersTrueFalse.length - 1] === true){
+                    BackSLot = CurrentLettersFound[CurrentLettersFound.length - 1];
+                    CurrentLettersTrueFalse[CurrentLettersTrueFalse.length -1] = false;
+                }
+                else {
+                    CurrentLettersTrueFalse[CurrentKeepTrack - 1] = false;
+                    if (CurrentKeepTrack !== 0){
+                        CurrentKeepTrack--;
                     };
                 };
+                let text = BackSLot.querySelector("h1");
+                text.remove();
+                SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+                SlotToTarget.appendChild(currentTyping);
+            }
+
+            if (CurrentLettersTrueFalse[CurrentKeepTrack] === false) {
+                const isLetter = /^[a-zA-Z]$/.test(event.key);
                 if (!isLetter){
                     return;
                 }
@@ -121,13 +157,13 @@ document.addEventListener("DOMContentLoaded", function(){
                 Text.classList.add("text");
                 SlotToTarget.appendChild(Text);
                 CurrentLettersTrueFalse[CurrentKeepTrack] = true;
-                CurrentKeepTrack++;
+                if (CurrentKeepTrack !== CurrentLettersFound.length - 1){
+                    CurrentKeepTrack++;
+                };
                 SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
                 SlotToTarget.appendChild(currentTyping);
             }
         }
-
-
 
         // there is so much stf happening my brain hurts frfr
 
@@ -137,6 +173,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 if (!isLetter){
                     return;
                 };
+                LastKey = key;
                 let Text = document.createElement("h1");
                 Text.textContent = key;
                 Text.classList.add("text2");
@@ -154,10 +191,10 @@ document.addEventListener("DOMContentLoaded", function(){
                 ThingyToTarget = AlreadyChosenLetters[ChosenKeepTrack];
                 ThingyToTarget.appendChild(currentTyping);
                 theOneTyping = true;
-                GuessedLetter(key);
-            }
+                GuessedLetter(LastKey);
+            };
 
-        }
+        };
     });
     
 });
