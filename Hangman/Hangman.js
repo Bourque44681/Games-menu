@@ -12,12 +12,16 @@ document.addEventListener("DOMContentLoaded", function(){
     const alreadyChosenCont = document.getElementById("alrCont");
     const alreadyChosen = document.getElementById("alreadyChosen")
 
-    var Words = ["cat", "dog", "airplane", "tower", "computer"];
+    var Words = ["cat"];
 
     var CurrentLettersFound = [];
     var AlreadyChosenLetters = [];
     var CurrentLettersTrueFalse = [];
     var AlrChosenLettersTrueFalse = [];
+    var ActualyLetterCheck = [];
+    var word = null;
+    var ActualLetterDivsFound = [];
+
     var ChosenKeepTrack = 0;
     var CurrentKeepTrack = 0;
 
@@ -35,13 +39,15 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function SetUpDoc(){
         let RandomWord = Words[Math.floor(Math.random() * Words.length)];
+        word = RandomWord;
         let wordLength = RandomWord.length;
         for (let i = 0; i < wordLength; i++){
             let NewDiv = document.createElement("div");
             NewDiv.classList.add("LPslot");
             letterPlacementsCont.appendChild(NewDiv);
             CurrentLettersFound.push(NewDiv);
-            CurrentLettersTrueFalse.push(false)
+            CurrentLettersTrueFalse.push(false);
+            ActualyLetterCheck.push(false);
             
         };
         for (let i = 0; i <18; i++) {
@@ -81,14 +87,54 @@ document.addEventListener("DOMContentLoaded", function(){
     // Maybe My brain Wont Break as Much Doing this part
     //-------------------------------------------------
 
+    function ResetGuessingLetter(){
+        while (CurrentLettersFound.length > 0) {
+            CurrentLettersFound[0].remove();
+            CurrentLettersFound.splice(0,1);
+            ActualLetterDivsFound.splice(0,1);
+        }
 
+        for (let i = 0; i<CurrentLettersTrueFalse.length; i++){
+            CurrentLettersTrueFalse[i] = false;
+        }
+        
+        for (let i = 0; i < word.length; i++){
+            let NewDiv = document.createElement("div");
+            NewDiv.classList.add("LPslot");
+            letterPlacementsCont.appendChild(NewDiv);
+            CurrentLettersFound.push(NewDiv);
+            if (ActualyLetterCheck[i] !== false){
+                let newH1 = document.createElement("h1");
+                NewDiv.appendChild(newH1);
+                newH1.textContent = ActualyLetterCheck[i];
+                newH1.classList.add("text")
+                CurrentLettersTrueFalse[i] = true;
+                ActualLetterDivsFound.push(NewDiv);
+            }
+        };
+
+        CurrentKeepTrack = 0;
+        while (CurrentLettersTrueFalse[CurrentKeepTrack] !== false){
+            CurrentKeepTrack++;
+            SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+            SlotToTarget.appendChild(currentTyping);
+        }                    
+        SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+        SlotToTarget.appendChild(currentTyping);
+        
+    }
 
     function GuessedLetter(Guess){
-        console.log(Guess);
+        for (let i = 0; i <word.length; i++){
+            if (word[i] === Guess){
+                ActualyLetterCheck[i] = word[i];
+                ResetGuessingLetter();
+            }
+        }
     }
 
     function GuessedWord(guess){
-        console.log(guess);
+        ResetGuessingLetter();
     }
 
 
@@ -110,6 +156,7 @@ document.addEventListener("DOMContentLoaded", function(){
             theOneTyping = true;
         };
     });
+
     var LastKey = null;
     document.addEventListener("keydown", function(event){
         let key = event.key;
@@ -124,23 +171,58 @@ document.addEventListener("DOMContentLoaded", function(){
                         Count++;
                     }
                 }
+
                 if (Count === CurrentLettersTrueFalse.length){
+                    
+                    for (let i = 0; i<CurrentLettersFound.length; i++){
+                        let h1 = CurrentLettersFound[i].querySelector("h1");
+                        h1.remove();
+                        CurrentKeepTrack = 0;
+                        SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+                        SlotToTarget.appendChild(currentTyping);
+                        for (let i = 0; i<CurrentLettersTrueFalse.length;i++){
+                            CurrentLettersTrueFalse[i] = false;
+                        };
+                    };
                     GuessedWord(word);
                 };
             };
 
             if (key === "Backspace"){
                 let BackSLot = CurrentLettersFound[CurrentKeepTrack - 1];
+                let ImaBeHonestIdkWhatToCallThisVariable = false;
                 if (CurrentLettersTrueFalse[CurrentLettersTrueFalse.length - 1] === true){
                     BackSLot = CurrentLettersFound[CurrentLettersFound.length - 1];
                     CurrentLettersTrueFalse[CurrentLettersTrueFalse.length -1] = false;
+                    ImaBeHonestIdkWhatToCallThisVariable = true;
                 }
                 else {
                     CurrentLettersTrueFalse[CurrentKeepTrack - 1] = false;
                     if (CurrentKeepTrack !== 0){
                         CurrentKeepTrack--;
+                        while (CurrentLettersTrueFalse[CurrentKeepTrack] !== false){
+                            CurrentKeepTrack--;
+                            SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+                            SlotToTarget.appendChild(currentTyping);
+                        } 
                     };
                 };
+
+                //---------------------------
+                //This is the most headache endusing thing ever
+                //---------------------------
+                if (BackSLot === ActualLetterDivsFound[CurrentKeepTrack]){
+                    alert('help') 
+                }
+                else {
+                    if (BackSLot === ActualLetterDivsFound[CurrentKeepTrack - 1]){
+                        alert('help')
+                    }
+                }
+                //---------------------------
+                //This is the most headache endusing thing ever
+                //---------------------------
+                
                 let text = BackSLot.querySelector("h1");
                 text.remove();
                 SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
@@ -157,11 +239,16 @@ document.addEventListener("DOMContentLoaded", function(){
                 Text.classList.add("text");
                 SlotToTarget.appendChild(Text);
                 CurrentLettersTrueFalse[CurrentKeepTrack] = true;
-                if (CurrentKeepTrack !== CurrentLettersFound.length - 1){
-                    CurrentKeepTrack++;
-                };
+
                 SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
                 SlotToTarget.appendChild(currentTyping);
+                if (CurrentKeepTrack !== CurrentLettersFound.length - 1) {
+                    while (CurrentLettersTrueFalse[CurrentKeepTrack] !== false){
+                        CurrentKeepTrack++;
+                        SlotToTarget = CurrentLettersFound[CurrentKeepTrack];
+                        SlotToTarget.appendChild(currentTyping);
+                    } 
+                }
             }
         }
 
@@ -191,6 +278,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 ThingyToTarget = AlreadyChosenLetters[ChosenKeepTrack];
                 ThingyToTarget.appendChild(currentTyping);
                 theOneTyping = true;
+
                 GuessedLetter(LastKey);
             };
 
